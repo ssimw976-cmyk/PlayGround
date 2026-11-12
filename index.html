@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#101923">
+  <title>Everlife — Your story, your way</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23b6efc8'/%3E%3Ctext x='20' y='29' text-anchor='middle' font-family='sans-serif' font-size='30' font-weight='700' fill='%23163d34'%3Ee%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game-shell">
+    <canvas id="world" aria-label="3D world — use WASD or the touch pad to walk"></canvas>
+    <div class="world-vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Everlife home"><span class="brand-mark">e</span><span>everlife<span class="brand-dot">.</span></span></a>
+      <div class="world-label"><span class="live-dot"></span><span>HARBORLIGHT</span><i></i><span id="weatherLabel">CLEAR SKIES</span></div>
+      <button class="icon-btn save-btn" id="saveBtn" title="Save life"><span>↥</span><span class="save-label">SAVE</span></button>
+    </header>
+    <section class="left-rail">
+      <div class="profile-card glass">
+        <div class="avatar" id="avatarInitial">A</div><div class="profile-copy"><strong id="playerName">Alex Morgan</strong><span id="lifeStage">YOUNG ADULT · DAY 1</span></div>
+        <button class="tiny-button" id="editProfile" aria-label="Edit profile">✎</button>
+      </div>
+      <div class="needs-card glass">
+        <div class="section-heading"><span>YOUR WELLBEING</span><span class="pulse-dot"></span></div>
+        <div class="need-row"><span class="need-icon hunger">◒</span><div class="need-info"><div class="need-label"><span>Hunger</span><b id="hungerText">78%</b></div><div class="meter"><i id="hungerBar" class="fill hunger-fill" style="width:78%"></i></div></div></div>
+        <div class="need-row"><span class="need-icon thirst">◉</span><div class="need-info"><div class="need-label"><span>Thirst</span><b id="thirstText">86%</b></div><div class="meter"><i id="thirstBar" class="fill thirst-fill" style="width:86%"></i></div></div></div>
+        <div class="need-row"><span class="need-icon energy">ϟ</span><div class="need-info"><div class="need-label"><span>Energy</span><b id="energyText">92%</b></div><div class="meter"><i id="energyBar" class="fill energy-fill" style="width:92%"></i></div></div></div>
+        <div class="need-row"><span class="need-icon mood">♡</span><div class="need-info"><div class="need-label"><span>Happiness</span><b id="moodText">74%</b></div><div class="meter"><i id="moodBar" class="fill mood-fill" style="width:74%"></i></div></div></div>
+        <div class="need-row"><span class="need-icon health">✚</span><div class="need-info"><div class="need-label"><span>Health</span><b id="healthText">100%</b></div><div class="meter"><i id="healthBar" class="fill health-fill" style="width:100%"></i></div></div></div>
+      </div>
+      <div class="goal-card glass"><div class="goal-icon">✦</div><div><span class="eyebrow">A NEW BEGINNING</span><strong id="goalTitle">Find your rhythm</strong><p id="goalText">Explore Harborlight and decide what your first day will look like.</p></div><span class="goal-arrow">↗</span></div>
+      <div class="nearby glass"><span class="nearby-icon">⌖</span><div><span class="eyebrow">NEARBY</span><strong id="nearbyText">Seabreeze Commons</strong></div><span class="distance" id="nearbyDistance">0 m</span></div>
+    </section>
+    <section class="right-rail">
+      <div class="clock-card glass"><div class="clock-top"><span class="eyebrow">TUESDAY · SPRING 01</span><span class="season">✳</span></div><div class="clock-time" id="clockTime">08:24 <span>AM</span></div><div class="clock-bottom"><span id="dateLabel">APR 01, 2025</span><span class="clock-weather">☀ &nbsp; 21°</span></div></div>
+      <div class="wallet-card glass"><div class="wallet-icon">$</div><div><span class="eyebrow">AVAILABLE FUNDS</span><strong id="moneyText">$1,250</strong></div><button id="ledgerBtn" title="View finances">↗</button></div>
+      <div class="map-card glass"><div class="map-heading"><span>YOUR NEIGHBORHOOD</span><button id="mapExpand" title="Expand map">⛶</button></div><div class="mini-map" id="miniMap"><div class="map-grid"></div><span class="map-road road-a"></span><span class="map-road road-b"></span><span class="map-park"></span><span class="map-water"></span><span class="map-pin pin-home">⌂</span><span class="map-pin pin-you">●</span><span class="map-pin pin-shop">▣</span><span class="map-label label-park">SEABREEZE PARK</span></div><div class="map-footer"><span><i class="legend-dot you-dot"></i>You</span><span><i class="legend-dot home-dot"></i>Home</span><span><i class="legend-dot shop-dot"></i>Places</span></div></div>
+    </section>
+    <div class="bottom-hud">
+      <div class="objective glass"><span class="objective-check" id="objectiveCheck">○</span><div><span class="eyebrow">TODAY'S LITTLE THINGS</span><strong id="objectiveText">Say hello to someone new</strong></div><span class="objective-count" id="objectiveCount">0 / 1</span></div>
+      <div class="interaction-prompt glass" id="interactionPrompt"><span class="prompt-key">E</span><span id="promptText">Explore your neighborhood</span><span class="prompt-arrow">↗</span></div>
+    </div>
+    <div class="mobile-controls" aria-label="Movement controls"><div class="dpad"><button class="move up" data-move="up">⌃</button><button class="move left" data-move="left">‹</button><span class="dpad-center">✦</span><button class="move right" data-move="right">›</button><button class="move down" data-move="down">⌄</button></div><button class="interact-touch" id="touchInteract"><span>↗</span><small>INTERACT</small></button></div>
+    <nav class="action-dock glass" aria-label="Life actions"><button class="dock-action" data-action="eat"><span class="dock-icon">◉</span><span>Eat</span></button><button class="dock-action" data-action="drink"><span class="dock-icon">♧</span><span>Drink</span></button><button class="dock-action" data-action="social"><span class="dock-icon">♡</span><span>Social</span></button><button class="dock-action" data-action="career"><span class="dock-icon">▣</span><span>Career</span></button><button class="dock-action" data-action="home"><span class="dock-icon">⌂</span><span>Home</span></button><button class="dock-action" data-action="phone"><span class="dock-icon">▤</span><span>Life</span></button></nav>
+    <div class="toast" id="toast" role="status"></div>
+    <div class="modal-backdrop" id="modalBackdrop"><section class="modal glass" id="modal" role="dialog" aria-modal="true"><button class="modal-close" id="modalClose">×</button><div id="modalContent"></div></section></div>
+    <div class="loading-screen" id="loadingScreen"><div class="loading-mark">e</div><span>HARBORLIGHT IS WAKING UP</span><div class="loading-line"><i></i></div></div>
+  </main>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}</script>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
